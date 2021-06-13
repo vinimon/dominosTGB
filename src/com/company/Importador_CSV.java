@@ -6,23 +6,23 @@ import java.io.IOException;
 
 public class Importador_CSV {
 
-    public static void CSV_reader(String filePath) throws IOException {
+    public static Mao[] CSV_reader(String filePath) throws IOException {
 
         String file = filePath;
         BufferedReader reader = null;
         String line = "";
-        int quantPecas = 0;
-        int quantMaos = 0;
+        Mao[] newMao = new Mao[0];
 
         try {
             reader = new BufferedReader(new FileReader(file));
 
-            while((line = reader.readLine()) != null) {
+            while((line = reader.readLine()) != null && Integer.parseInt(line) != 0) {
 
                 int quantDominos = Integer.parseInt(line);
+
                 Domino[] dominos = new Domino[quantDominos];
 
-                for(int i = 0; i < quantDominos; i++){
+                for (int i = 0; i < quantDominos; i++) {
                     line = reader.readLine();
 
                     String[] row = line.split(";");
@@ -32,15 +32,27 @@ public class Importador_CSV {
 
                 Mao maoNova = new Mao(quantDominos, dominos);
 
-                Main.maos[quantMaos] = maoNova;
-                quantMaos++;
-
+                newMao = insereMao(newMao, maoNova);
             }
+            return newMao;
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    public static Mao[] insereMao(Mao[] maos, Mao mao){
+        int count = maos.length;
+        Mao[] newArr = new Mao[count+1];
+
+        for (int i = 0; i < count; i++) {
+            newArr[i] = maos[i];
+        }
+        newArr[newArr.length-1] = mao;
+        return newArr;
     }
 
     public static Domino leDomino(String[] row){

@@ -11,6 +11,10 @@ public class Mao {
         this.mao = mao;
     }
 
+    public Mao() {
+
+    }
+
     public Integer getQuant() {
         return quant;
     }
