@@ -22,7 +22,7 @@ public class Main {
             // mao.setQuant(3);
 
             int pos = 0;
-            while (mao.verificaMatch(maos[i]) == false && pos <= maos[0].getQuant()) {
+            while (mao.verificaMatch(maos[i]) == false && pos <= maos[i].getQuant()) {
 
                 System.out.println("swap " + "posição: " + pos);
                 mao.swap(maos[i], pos);
