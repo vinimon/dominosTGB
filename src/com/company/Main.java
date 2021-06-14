@@ -17,13 +17,12 @@ public class Main {
 
         for (int i = 0; i < maos.length; i++) {
             System.out.println(mao.verificaMatch(maos[i]));
-            
+
             // faz o swap caso necessario
-            mao.setQuant(3);
-            
-            
+            // mao.setQuant(3);
+
             int pos = 0;
-            while (mao.verificaMatch(maos[i]) == false && pos <= mao.getQuant()) {
+            while (mao.verificaMatch(maos[i]) == false && pos <= maos[0].getQuant()) {
 
                 System.out.println("swap " + "posição: " + pos);
                 mao.swap(maos[i], pos);
@@ -33,10 +32,7 @@ public class Main {
                 }
                 pos++;
             }
-            
-            
-           
-           
+
         }
 
     }
