@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Mao {
     private Integer quant;
     private Domino[] mao;
+    private int soma;
 
     public Mao(Integer quant, Domino[] mao) {
         this.quant = quant;
@@ -17,6 +18,10 @@ public class Mao {
 
     public Integer getQuant() {
         return quant;
+       
+    }
+    public int getSoma() {
+        return soma;
        
     }
 
@@ -71,6 +76,7 @@ public class Mao {
         for (int i = 0; i < dominos.length; i++) {
             soma += dominos[i].getDomino()[posicao];
         }
+        this.soma= soma;
         return soma;
     }
 
